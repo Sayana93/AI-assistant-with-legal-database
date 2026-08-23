@@ -1,7 +1,10 @@
 import streamlit as st
 from gigachat import GigaChat
 import PyPDF2
-AUTH_DATA = "MDE5ZDk0ZDgtZTg2Yy03MmM0LTg5M2EtZTQzZDFjYmU1NmE0OmFmMDlkNTNlLWUwMWQtNGEyZS05NDEwLTcwODhiODA4M2Y5OQ=="
+import os
+from dotenv import load_dotenv
+
+AUTH_DATA=os.getenv("GIGACHAT_AUTH_DATA")
 
 st.set_page_config(page_title="ИИ-Помощник Служащего", page_icon="📝")
 st.title("🤖 Ассистент муниципального служащего")
@@ -16,7 +19,6 @@ with st.sidebar:
     uploaded_file = st.file_uploader("+", "pdf")
 user_text = st.text_area("Введите краткую суть дела:", 
                          placeholder="Например: Прокурорская проверка по факту нарушения сроков...")
-
 if st.button("Сгенерировать ответ"):
     if user_text:
         with st.spinner('ИИ-юрист составляет документ...'):
