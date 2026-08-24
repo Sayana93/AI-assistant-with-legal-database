@@ -18,3 +18,4 @@
 - Streamlit
 - GigaChat API
 - PyPDF2
+## Прототип https://ai-urist.streamlit.app/
