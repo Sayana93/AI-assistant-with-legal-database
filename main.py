@@ -80,7 +80,7 @@ if uploaded_file is not None:
                                   3. Соблюдайте структуру официального ответа: шапка, вводная часть (ссылка на требование), мотивированная позиция по каждому пункту, принятые меры.
                                   4. Обязательно включите формулировки: 'согласно постановлению и распоряжению', 'в установленный срок', 'доводы приняты'."""
                 # Используем вашу функцию или прямой вызов GigaChat
-                with GigaChat(credentials=AUTH_DATA, verify_ssl_certs=False) as giga:
+                with GigaChat(credentials=AUTH_DATA, model="GigaChat", verify_ssl_certs=False, timeout=60) as giga:
                     res = giga.chat(file_prompt)
                     st.subheader("Проект ответа по файлу:")
                     st.write(res.choices[0].message.content)
