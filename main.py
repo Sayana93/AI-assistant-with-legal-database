@@ -26,7 +26,7 @@ if st.button("Сгенерировать ответ"):
         with st.spinner('ИИ-юрист составляет документ...'):
             try:
                 # Используем правильную переменную AUTH_DATA
-                with GigaChat(credentials=AUTH_DATA, model="GigaChat", verify_ssl_certs=False, timeout=60) as giga:
+                with GigaChat(credentials=AUTH_DATA, model="GigaChat", scope="GIGACHAT_API_PERS", verify_ssl_certs=False, timeout=60) as giga:
                     system_role = "Ты — ведущий эксперт по муниципальному праву и опытный юрист. Пишите строго в официально-деловом стиле. Ваши ответы должны быть глубоко проработанными, логически структурированными, содержать ссылки на нормы законодательства РФ (где применимо), а также учитывать все нюансы и возможные риски поставленной задачи."
                     
                     # Формируем запрос
@@ -80,7 +80,7 @@ if uploaded_file is not None:
                                   3. Соблюдайте структуру официального ответа: шапка, вводная часть (ссылка на требование), мотивированная позиция по каждому пункту, принятые меры.
                                   4. Обязательно включите формулировки: 'согласно постановлению и распоряжению', 'в установленный срок', 'доводы приняты'."""
                 # Используем вашу функцию или прямой вызов GigaChat
-                with GigaChat(credentials=AUTH_DATA, model="GigaChat", verify_ssl_certs=False, timeout=60) as giga:
+                with GigaChat(credentials=AUTH_DATA, model="GigaChat", scope="GIGACHAT_API_PERS", verify_ssl_certs=False, timeout=60) as giga:
                     res = giga.chat(file_prompt)
                     st.subheader("Проект ответа по файлу:")
                     st.write(res.choices[0].message.content)
